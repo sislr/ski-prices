@@ -13,6 +13,7 @@ gem "bootsnap", require: false
 gem "kamal", require: false
 gem "thruster", require: false
 
+gem "mission_control-jobs"
 gem "administrate"
 gem "ferrum"
 
