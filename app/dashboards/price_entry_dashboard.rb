@@ -12,7 +12,7 @@ class PriceEntryDashboard < Administrate::BaseDashboard
     price_in_chf: Field::Number,
     ski_pass: Field::BelongsTo,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

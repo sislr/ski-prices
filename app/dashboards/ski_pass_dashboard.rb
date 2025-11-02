@@ -14,7 +14,7 @@ class SkiPassDashboard < Administrate::BaseDashboard
     ski_season: Field::BelongsTo,
     valid_on: Field::Date,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

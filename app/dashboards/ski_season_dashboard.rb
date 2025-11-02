@@ -14,7 +14,7 @@ class SkiSeasonDashboard < Administrate::BaseDashboard
     ski_resort: Field::BelongsTo,
     start_date: Field::Date,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
