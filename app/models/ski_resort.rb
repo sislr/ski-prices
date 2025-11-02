@@ -3,4 +3,8 @@ class SkiResort < ApplicationRecord
 
   validates :name, presence: true
   validates :booking_url, presence: true
+
+  def current_ski_season
+    ski_seasons.active.first
+  end
 end

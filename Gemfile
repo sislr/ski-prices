@@ -14,12 +14,14 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 gem "administrate"
+gem "ferrum"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "bundler-audit", require: false
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
+  gem "awesome_print"
 end
 
 group :development do
