@@ -9,6 +9,8 @@ class Fetchers::StMoritz < Fetchers::Base
     season = @ski_resort.current_ski_season
     price_entries = map_response_to_price_entries(skitickets_availability, season.start_date, season.end_date)
     create_price_entries!(season, price_entries.compact)
+
+    page.browser.quit
   end
 
   private
