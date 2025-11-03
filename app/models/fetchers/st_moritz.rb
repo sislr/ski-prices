@@ -1,6 +1,6 @@
 class Fetchers::StMoritz < Fetchers::Base
   def fetch_prices!
-    page = open_browser
+    browser, page = open_browser
     traffic = page.network.traffic
     visit_ski_resort_page(page)
 
@@ -10,7 +10,7 @@ class Fetchers::StMoritz < Fetchers::Base
     price_entries = map_response_to_price_entries(skitickets_availability, season.start_date, season.end_date)
     create_price_entries!(season, price_entries.compact)
 
-    page.browser.quit
+    browser.quit
   end
 
   private
@@ -18,7 +18,7 @@ class Fetchers::StMoritz < Fetchers::Base
   TIMEOUT_IN_SECONDS = 20
   def open_browser
     browser = Ferrum::Browser.new(timeout: TIMEOUT_IN_SECONDS, browser_options: { "no-sandbox": nil })
-    browser.create_page
+    [browser, browser.create_page]
   end
 
   def visit_ski_resort_page(page)
