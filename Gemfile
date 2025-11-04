@@ -17,6 +17,8 @@ gem "mission_control-jobs"
 gem "administrate"
 gem "ferrum"
 
+gem "tailwindcss-rails"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "bundler-audit", require: false

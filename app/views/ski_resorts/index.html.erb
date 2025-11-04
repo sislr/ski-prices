@@ -1,0 +1,36 @@
+<section class="py-6">
+  <div class="mb-6 sm:mb-8">
+    <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">Ski Pass Price Tracker</h1>
+    <p class="mt-2 text-slate-600">Track ski day pass prices for specific dates.</p>
+  </div>
+
+  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+    <% @ski_resorts.each do |ski_resort| %>
+      <% ski_resort.ski_seasons.active.find_each do |ski_season| %>
+        <li>
+          <%= link_to ski_season, class: "group block rounded-xl bg-white shadow-sm ring-1 ring-slate-200 hover:shadow-md hover:ring-slate-300 transition overflow-hidden" do %>
+            <div class="h-28 <%= gradient_for_resort(ski_resort) %> opacity-90 group-hover:opacity-100 transition"></div>
+            <div class="p-4">
+              <h2 class="text-lg font-medium text-slate-900 flex items-start justify-between gap-3">
+                <span><%= ski_resort.name %></span>
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-slate-900 group-hover:text-white transition">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                    <path fill-rule="evenodd" d="M5.25 3A2.25 2.25 0 003 5.25v13.5A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V12a.75.75 0 00-1.5 0v6.75a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V5.25a.75.75 0 01.75-.75H12a.75.75 0 000-1.5H5.25z" clip-rule="evenodd"/>
+                    <path d="M16.5 2.25a.75.75 0 000 1.5h2.19l-8.72 8.72a.75.75 0 101.06 1.06l8.72-8.72v2.19a.75.75 0 001.5 0V2.25h-4.75z"/>
+                  </svg>
+              </span>
+              </h2>
+              <div class="mt-2 flex flex-wrap items-center gap-2">
+                <%= passes_count_badge(ski_season) %>
+                <span class="<%= badge_classes %>">
+                  <%= ski_season.display_dates %>
+                </span>
+                <%= entries_per_pass_badge(ski_season) %>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</section>

@@ -18,7 +18,7 @@ class Fetchers::StMoritz < Fetchers::Base
   TIMEOUT_IN_SECONDS = 20
   def open_browser
     browser = Ferrum::Browser.new(timeout: TIMEOUT_IN_SECONDS, browser_options: { "no-sandbox": nil })
-    [browser, browser.create_page]
+    [ browser, browser.create_page ]
   end
 
   def visit_ski_resort_page(page)

@@ -1,0 +1,14 @@
+<header class="sticky top-0 z-40 w-full backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/80 border-b border-slate-200/70">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex h-14 items-center justify-between">
+      <a href="/" class="inline-flex items-center gap-2 group">
+        <span class="text-3xl">⛷️</span>
+      </a>
+      <nav class="hidden sm:flex items-center gap-6 text-sm text-slate-600">
+        <%= link_to "Home", root_path, class: "hover:text-slate-900 transition" %>
+        <%= link_to "Admin", admin_root_path, class: "hover:text-slate-900 transition" %>
+        <%= link_to "Jobs", mission_control_jobs_path, class: "hover:text-slate-900 transition" %>
+      </nav>
+    </div>
+  </div>
+</header>
