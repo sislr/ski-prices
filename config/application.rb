@@ -36,6 +36,7 @@ module SkiPrices
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.mission_control.jobs.http_basic_auth_enabled = false
+    MissionControl::Jobs.http_basic_auth_user = Rails.application.credentials.admin.basic_auth.user
+    MissionControl::Jobs.http_basic_auth_password = Rails.application.credentials.admin.basic_auth.password
   end
 end
