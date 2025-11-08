@@ -79,8 +79,6 @@ builder:
 
   # Build image via remote server (useful for faster amd64 builds on arm64 computers)
   remote: ssh://root@78.47.120.71
-  cache:
-    type: registry
 
   #
   # # Pass arguments and secrets to the Docker build process
