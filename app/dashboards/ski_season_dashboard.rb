@@ -9,10 +9,11 @@ class SkiSeasonDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    end_date: Field::Date,
     ski_passes: Field::HasMany,
     ski_resort: Field::BelongsTo,
+    slug: Field::String,
     start_date: Field::Date,
+    end_date: Field::Date,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -24,19 +25,22 @@ class SkiSeasonDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    end_date
     ski_passes
     ski_resort
+    slug
+    start_date
+    end_date
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    end_date
     ski_passes
     ski_resort
+    slug
     start_date
+    end_date
     created_at
     updated_at
   ].freeze
@@ -45,10 +49,11 @@ class SkiSeasonDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    end_date
     ski_passes
     ski_resort
+    slug
     start_date
+    end_date
   ].freeze
 
   # COLLECTION_FILTERS

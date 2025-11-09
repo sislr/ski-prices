@@ -10,9 +10,9 @@ class SkiPassDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     age_group: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
-    price_entries: Field::HasMany,
     ski_season: Field::BelongsTo,
     valid_on: Field::Date,
+    price_entries: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -34,9 +34,9 @@ class SkiPassDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     age_group
-    price_entries
     ski_season
     valid_on
+    price_entries
     created_at
     updated_at
   ].freeze
@@ -46,9 +46,9 @@ class SkiPassDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     age_group
-    price_entries
     ski_season
     valid_on
+    price_entries
   ].freeze
 
   # COLLECTION_FILTERS

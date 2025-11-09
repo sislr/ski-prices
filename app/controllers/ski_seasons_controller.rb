@@ -1,5 +1,5 @@
 class SkiSeasonsController < ApplicationController
   def show
-    @ski_season = SkiSeason.find(params[:id])
+    @ski_season = SkiSeason.find_by(slug: params[:slug])
   end
 end

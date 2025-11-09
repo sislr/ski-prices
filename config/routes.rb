@@ -3,22 +3,23 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  root to: "ski_resorts#index"
-  resources :ski_resorts, only: :index
-  resources :ski_seasons, only: :show
+  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
+  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   namespace :admin do
+    root to: "ski_resorts#index"
     resources :price_entries
     resources :ski_passes
     resources :ski_resorts
     resources :ski_seasons
-
-    root to: "ski_resorts#index"
   end
 
   mount MissionControl::Jobs::Engine, at: "/jobs"
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  root to: "ski_resorts#index"
+  resources :ski_resorts, only: :index
+
+  resources :ski_seasons, only: :show, param: :slug
+  get "/:slug", to: "ski_seasons#show", as: :ski_season_short
 end

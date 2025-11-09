@@ -9,8 +9,8 @@ class SkiResortDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    booking_url: Field::String,
     name: Field::String,
+    booking_url: Field::String,
     ski_seasons: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -23,8 +23,8 @@ class SkiResortDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    booking_url
     name
+    booking_url
     ski_seasons
   ].freeze
 
@@ -32,8 +32,8 @@ class SkiResortDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    booking_url
     name
+    booking_url
     ski_seasons
     created_at
     updated_at
@@ -43,8 +43,8 @@ class SkiResortDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    booking_url
     name
+    booking_url
     ski_seasons
   ].freeze
 

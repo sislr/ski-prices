@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_02_111337) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_09_111516) do
   create_table "price_entries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "price_in_chf", null: false
@@ -40,9 +40,11 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_02_111337) do
     t.datetime "created_at", null: false
     t.date "end_date", null: false
     t.integer "ski_resort_id", null: false
+    t.string "slug"
     t.date "start_date", null: false
     t.datetime "updated_at", null: false
     t.index ["ski_resort_id"], name: "index_ski_seasons_on_ski_resort_id"
+    t.index ["slug"], name: "index_ski_seasons_on_slug", unique: true
   end
 
   add_foreign_key "price_entries", "ski_passes"

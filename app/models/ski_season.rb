@@ -5,8 +5,11 @@ class SkiSeason < ApplicationRecord
 
   scope :active, -> { where("start_date <= ? AND end_date >= ?", 2.months.from_now, Date.current) }
 
+  validates :slug, presence: true, uniqueness: true
   validates :start_date, presence: true, comparison: { less_than: :end_date }
   validates :end_date, presence: true, comparison: { greater_than: :start_date }
+
+  def to_param = slug
 
   def display_dates
     "#{I18n.l(start_date, format: :short)} – #{I18n.l(end_date, format: :short)}"
