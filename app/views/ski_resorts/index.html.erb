@@ -21,10 +21,10 @@
               </span>
               </h2>
               <div class="mt-2 flex flex-wrap items-center gap-2">
-                <%= passes_count_badge(ski_season) %>
                 <span class="<%= badge_classes %>">
                   <%= ski_season.display_dates %>
                 </span>
+                <%= passes_count_badge(ski_season) %>
                 <%= entries_per_pass_badge(ski_season) %>
               </div>
             </div>

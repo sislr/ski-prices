@@ -17,7 +17,7 @@ module SkiResortsHelper
 
   def passes_count_badge(season)
     count = season.ski_passes.size
-    label = count == 1 ? "1 pass" : "#{count} passes"
+    label = count == 1 ? "1 day pass" : "#{count} day passes"
     content_tag(:span, label, class: badge_classes)
   end
 
@@ -25,7 +25,7 @@ module SkiResortsHelper
     passes = season.ski_passes.size
     entries = season.price_entries.size
     value = passes.positive? ? (entries.to_f / passes).round(1) : 0
-    label = "#{value} entries/pass"
+    label = "#{value} price entries/pass"
     content_tag(:span, label, class: badge_classes)
   end
 
