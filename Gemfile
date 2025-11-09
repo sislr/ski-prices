@@ -29,6 +29,7 @@ end
 
 group :development do
   gem "web-console"
+  gem "hotwire-spark"
 end
 
 group :test do
