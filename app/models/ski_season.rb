@@ -11,4 +11,12 @@ class SkiSeason < ApplicationRecord
   def display_dates
     "#{I18n.l(start_date, format: :short)} – #{I18n.l(end_date, format: :short)}"
   end
+
+  def average_price_in_chf_per_month
+    price_entries
+      .order(:valid_on)
+      .group_by_month(:valid_on, format: "%B")
+      .average(:price_in_chf)
+      .transform_values(&:round)
+  end
 end

@@ -1,0 +1,15 @@
+<div class="py-6">
+  <div class="mb-2 sm:mb-4 flex gap-2">
+    <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">
+      <%= @ski_season.ski_resort.name %>
+    </h1>
+    <p class="<%= badge_classes %>">
+      <%= @ski_season.display_dates %>
+    </p>
+  </div>
+</div>
+
+<div class="flex flex-col w-full mb-6 py-4 px-4 bg-white border border-gray-200 rounded-xl shadow-xs">
+  <h2 class="text-xl tracking-tight text-slate-900 mb-4">Current average prices / month</h2>
+  <%= column_chart @ski_season.average_price_in_chf_per_month %>
+</div>

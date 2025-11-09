@@ -1,9 +1,10 @@
 source "https://rubygems.org"
 
 gem "rails", "~> 8.1.1"
-gem "propshaft"
 gem "sqlite3"
 gem "puma"
+gem "propshaft"
+gem "importmap-rails"
 
 gem "solid_cache"
 gem "solid_queue"
@@ -18,6 +19,8 @@ gem "administrate"
 gem "ferrum"
 
 gem "tailwindcss-rails"
+gem "chartkick"
+gem "groupdate"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
