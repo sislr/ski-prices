@@ -1,0 +1,52 @@
+<div class="flex flex-col lg:flex-row gap-7 lg:gap-10 w-full mb-6 py-4 px-4 bg-white border border-gray-200 rounded-xl shadow-xs">
+  <div class="w-full lg:w-1/3 h-full">
+    <div class="flex justify-between">
+      <% if @selected_date.beginning_of_month > @ski_season.start_date %>
+        <%= link_to "<",
+                    ski_season_path(@ski_season, month: @selected_date.prev_month.month),
+                    class: "font-thin" %>
+      <% else %>
+        <span></span>
+      <% end %>
+
+      <p><%= @selected_date.strftime("%B") %></p>
+
+      <% if @selected_date.end_of_month < @ski_season.end_date %>
+        <%= link_to ">",
+                    ski_season_path(@ski_season, month: @selected_date.next_month.month),
+                    class: "font-thin" %>
+      <% else %>
+        <span></span>
+      <% end %>
+    </div>
+
+    <div class="grid grid-cols-5 mt-2">
+      <% (@selected_date.beginning_of_month..@selected_date.end_of_month).each do |date| %>
+        <% if @ski_pass_prices.keys.include?(date) %>
+          <%= link_to ski_season_path(@ski_season, date: date) do %>
+            <div class="text-sm border-b border-b-gray-300 text-center p-2">
+              <p
+                class="inline-flex items-center justify-center w-7 h-7 p-1
+                      <%= "rounded-full ring-1 ring-blue-300 bg-blue-200" if @selected_date == date  %>">
+                <%= date.day %>
+              </p>
+              <p class="font-thin mt-1"><%= @ski_pass_prices[date] %> CHF</p>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="border-b border-b-gray-300 text-center p-2 bg-gray-100">
+            <p class="text-gray-400"><%= date.day %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="w-full">
+    <% if @selected_ski_pass %>
+      <p class="font-semibold mb-2"><%= @selected_ski_pass.valid_on %></p>
+      <%= line_chart price_trend(@selected_ski_pass),
+                     min: 0, max: @selected_ski_pass.price_entries.maximum(:price_in_chf) + 20 %>
+    <% end %>
+  </div>
+</div>

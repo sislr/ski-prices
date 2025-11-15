@@ -11,6 +11,10 @@ class SkiSeason < ApplicationRecord
 
   def to_param = slug
 
+  def period
+    start_date..end_date
+  end
+
   def display_dates
     "#{I18n.l(start_date, format: :short)} – #{I18n.l(end_date, format: :short)}"
   end

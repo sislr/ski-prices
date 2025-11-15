@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_09_111516) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_09_144503) do
   create_table "price_entries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "price_in_chf", null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_111516) do
   create_table "ski_passes", force: :cascade do |t|
     t.string "age_group", null: false
     t.datetime "created_at", null: false
+    t.virtual "month", type: :integer, as: "cast(strftime('%m', valid_on) as integer)", stored: false
     t.integer "ski_season_id", null: false
     t.datetime "updated_at", null: false
     t.date "valid_on", null: false
