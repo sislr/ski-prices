@@ -24,7 +24,7 @@
       <% (@selected_date.beginning_of_month..@selected_date.end_of_month).each do |date| %>
         <% if @ski_pass_prices.keys.include?(date) %>
           <%= link_to ski_season_path(@ski_season, date: date) do %>
-            <div class="text-sm border-b border-b-gray-300 text-center p-2">
+            <div class="text-sm text-center p-2 border-b border-b-gray-300 <%= "bg-gray-100" if date.past? %>">
               <p
                 class="inline-flex items-center justify-center w-7 h-7 p-1
                       <%= "rounded-full ring-1 ring-blue-300 bg-blue-200" if @selected_date == date  %>">
