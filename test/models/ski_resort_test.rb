@@ -29,7 +29,7 @@ class SkiResortTest < ActiveSupport::TestCase
 
   test "fetch_all_prices! enqueues a job" do
     ski_resort = ski_resorts(:st_moritz)
-    assert_enqueued_with(job: PriceTrackerJob, args: [ski_resort.id]) do
+    assert_enqueued_with(job: PriceTrackerJob, args: [ ski_resort.id ]) do
       SkiResort.fetch_all_prices!
     end
   end

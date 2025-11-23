@@ -3,3 +3,8 @@ st_moritz_2025_2026:
   slug: st-moritz-25
   start_date: 2025-11-22
   end_date: 2026-04-26
+zermatt_2025_2026:
+  ski_resort: zermatt
+  slug: zermatt-25
+  start_date: 2025-11-01
+  end_date: 2026-05-03
