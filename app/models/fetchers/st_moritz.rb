@@ -7,7 +7,7 @@ class Fetchers::StMoritz < Fetchers::Base
     skitickets_availability = extract_skitickets_availability(traffic)
 
     season = @ski_resort.current_ski_season
-    price_entries = map_response_to_price_entries(skitickets_availability, season.start_date, season.end_date)
+    price_entries = map_response_to_price_entries(skitickets_availability)
     create_price_entries!(season, price_entries.compact)
 
     browser.quit
@@ -36,13 +36,12 @@ class Fetchers::StMoritz < Fetchers::Base
     JSON.parse(availability_request.response.body)
   end
 
-  def map_response_to_price_entries(response, season_start_date, season_end_date)
+  def map_response_to_price_entries(response)
     response.values.map do |price|
       date_from = Date.parse(price["date_from"])
       date_to = Date.parse(price["date_to"])
 
       next unless date_from == date_to
-      next unless date_from >= season_start_date && date_to <= season_end_date
 
       {
         valid_on: date_from,
