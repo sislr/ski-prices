@@ -12,7 +12,10 @@ class SkiResort < ApplicationRecord
   end
 
   def fetch_prices!
-    "Fetchers::#{fetcher_class_name}".constantize.new(self).fetch_prices!
+    fetcher_class = "Fetchers::#{fetcher_class_name}".safe_constantize
+    return unless fetcher_class
+
+    fetcher_class.new(self).fetch_prices!
   end
 
   def current_ski_season

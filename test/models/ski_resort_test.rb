@@ -18,6 +18,15 @@ class SkiResortTest < ActiveSupport::TestCase
     mock_fetcher.verify
   end
 
+  test "fetch_prices! with unknown fetcher class" do
+    ski_resort = ski_resorts(:st_moritz)
+    ski_resort.fetcher_class_name = "UnknownFetcher"
+
+    assert_nothing_raised do
+      ski_resort.fetch_prices!
+    end
+  end
+
   test "fetch_all_prices! enqueues a job" do
     ski_resort = ski_resorts(:st_moritz)
     assert_enqueued_with(job: PriceTrackerJob, args: [ski_resort.id]) do
