@@ -13,6 +13,6 @@ production:
   clear_solid_queue_finished_jobs:
     command: "SolidQueue::Job.clear_finished_in_batches(sleep_between_batches: 0.3)"
     schedule: every Monday at 8am
-  price_tracker_job:
-    class: PriceTrackerJob
+  price_tracker_jobs:
+    command: "SkiResort.fetch_all_prices!"
     schedule: at 5am every day

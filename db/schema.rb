@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_09_144503) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_23_100813) do
   create_table "price_entries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "price_in_chf", null: false
@@ -33,8 +33,10 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_144503) do
   create_table "ski_resorts", force: :cascade do |t|
     t.string "booking_url", null: false
     t.datetime "created_at", null: false
+    t.string "fetcher_class_name"
     t.string "name", null: false
     t.datetime "updated_at", null: false
+    t.index ["fetcher_class_name"], name: "index_ski_resorts_on_fetcher_class_name", unique: true
   end
 
   create_table "ski_seasons", force: :cascade do |t|

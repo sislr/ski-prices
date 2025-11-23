@@ -1,3 +1,4 @@
 st_moritz:
   name: St. Moritz
   booking_url: "https://booking.engadin.ch/de/skitickets/tages--und-mehrtageskarten"
+  fetcher_class_name: StMoritz
