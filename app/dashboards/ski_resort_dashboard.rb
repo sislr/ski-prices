@@ -11,6 +11,7 @@ class SkiResortDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     booking_url: Field::String,
+    fetcher_class_name: Field::String,
     ski_seasons: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -25,6 +26,7 @@ class SkiResortDashboard < Administrate::BaseDashboard
     id
     name
     booking_url
+    fetcher_class_name
     ski_seasons
   ].freeze
 
@@ -34,6 +36,7 @@ class SkiResortDashboard < Administrate::BaseDashboard
     id
     name
     booking_url
+    fetcher_class_name
     ski_seasons
     created_at
     updated_at
@@ -45,6 +48,7 @@ class SkiResortDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     name
     booking_url
+    fetcher_class_name
     ski_seasons
   ].freeze
 
