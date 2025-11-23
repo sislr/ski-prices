@@ -19,9 +19,9 @@ class SkiSeasonsController < ApplicationController
     if filter_date.present? && @ski_season.period.include?(filter_date)
       filter_date
     elsif params[:month].present?
-      @ski_passes.first&.valid_on || @ski_season.start_date
+      @ski_passes.not_in_past.first&.valid_on || @ski_passes.first&.valid_on
     else
-      @ski_season.start_date
+      @ski_season.period.include?(Date.today) ? Date.today : @ski_season.start_date
     end
   end
 end

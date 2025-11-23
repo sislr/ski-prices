@@ -3,6 +3,7 @@ class SkiPass < ApplicationRecord
   has_many :price_entries, dependent: :destroy
 
   scope :for_month, ->(month) { where(month: month).order(:valid_on) }
+  scope :not_in_past, -> { where(valid_on: Date.today..) }
 
   AGE_GROUPS = %w[child youth adult].freeze
   enum :age_group, AGE_GROUPS.index_with(&:itself), validate: true
