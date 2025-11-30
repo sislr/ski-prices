@@ -21,14 +21,6 @@ module SkiResortsHelper
     content_tag(:span, label, class: badge_classes)
   end
 
-  def entries_per_pass_badge(season)
-    passes = season.ski_passes.size
-    entries = season.price_entries.size
-    value = passes.positive? ? (entries.to_f / passes).round(1) : 0
-    label = "#{value} price entries/pass"
-    content_tag(:span, label, class: badge_classes)
-  end
-
   def badge_classes
     "inline-flex items-center gap-1 rounded-full bg-slate-100 text-slate-700 px-2.5 py-1 text-xs font-medium ring-1 ring-inset ring-slate-200"
   end
