@@ -1,24 +1,20 @@
-# README
+# Ski Pass Price Tracker 🎿
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A small Rails app that tracks daily ski pass prices for selected Swiss ski resorts.
 
-Things you may want to cover:
+## Quick start
 
-* Ruby version
+```
+bin/setup
+```
 
-* System dependencies
+Run the app (server + CSS watcher):
+```
+bin/dev
+```
 
-* Configuration
+## Tests
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+bin/rails test
+```
