@@ -44,13 +44,4 @@ class SkiPassTest < ActiveSupport::TestCase
     ski_pass.valid_on = Date.new(2026, 05, 01)
     assert_not ski_pass.valid?
   end
-
-  test "current_price_in_chf returns the latest price" do
-    ski_pass = ski_passes(:st_moritz_christmas_day_pass_adult)
-    ski_pass.price_entries.destroy_all
-    ski_pass.price_entries.create!(price_in_chf: 100, created_at: 1.week.ago)
-    ski_pass.price_entries.create!(price_in_chf: 120, created_at: 1.day.ago)
-
-    assert_equal 120, ski_pass.current_price_in_chf
-  end
 end

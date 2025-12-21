@@ -11,10 +11,6 @@ class SkiPass < ApplicationRecord
   validates :valid_on, presence: true, uniqueness: { scope: [ :ski_season_id, :age_group ] }
   validate :valid_on_is_within_ski_season
 
-  def current_price_in_chf
-    price_entries.ordered_by_date.last&.price_in_chf
-  end
-
   private
 
   def valid_on_is_within_ski_season

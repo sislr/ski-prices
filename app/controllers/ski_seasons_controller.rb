@@ -2,7 +2,7 @@ class SkiSeasonsController < ApplicationController
   def show
     @ski_season = SkiSeason.find_by(slug: params[:slug])
     @ski_passes = @ski_season.ski_passes.for_month(month_filter).includes(:price_entries)
-    @ski_pass_prices = @ski_passes.map { |pass| [ pass.valid_on,  pass.current_price_in_chf ] }.to_h
+    @ski_pass_prices = @ski_passes.pluck(:valid_on, :current_price_in_chf).to_h
 
     @selected_date = date_filter
     @selected_ski_pass = @ski_passes.find_by(valid_on: @selected_date)

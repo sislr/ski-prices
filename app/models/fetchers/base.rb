@@ -19,6 +19,7 @@ class Fetchers::Base
 
       pass = season.ski_passes.find_or_create_by!(valid_on: price[:valid_on], age_group: "adult")
       pass.price_entries.create!(price_in_chf: price[:price_in_chf])
+      pass.update!(current_price_in_chf: price[:price_in_chf])
     end
   end
 end
