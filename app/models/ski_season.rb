@@ -21,9 +21,10 @@ class SkiSeason < ApplicationRecord
 
   def average_price_in_chf_per_month
     price_entries
-      .order(:valid_on)
-      .group_by_month(:valid_on, format: "%B")
+      .group("ski_passes.valid_on_year_month")
+      .order("ski_passes.valid_on_year_month")
       .average(:price_in_chf)
+      .transform_keys { |k| Date.strptime(k, "%Y-%m").strftime("%B") }
       .transform_values(&:round)
   end
 end

@@ -2,7 +2,7 @@ class SkiPass < ApplicationRecord
   belongs_to :ski_season
   has_many :price_entries, dependent: :destroy
 
-  scope :for_month, ->(month) { where(month: month).order(:valid_on) }
+  scope :for_month, ->(month) { where(valid_on_month: month).order(:valid_on) }
   scope :not_in_past, -> { where(valid_on: Date.today..) }
 
   AGE_GROUPS = %w[child youth adult].freeze
