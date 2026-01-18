@@ -8,3 +8,8 @@ zermatt_2025_2026:
   slug: zermatt-25
   start_date: 2025-11-01
   end_date: 2026-05-03
+arosa_lenzerheide_2025_2026:
+  ski_resort: arosa_lenzerheide
+  slug: arosa-lenzerheide-25
+  start_date: 2025-12-13
+  end_date: 2026-04-12

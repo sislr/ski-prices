@@ -6,3 +6,7 @@ zermatt:
   name: Zermatt
   booking_url: "https://www.matterhornparadise.ch/de/buchen/tickets/skipass-winter"
   fetcher_class_name: Zermatt
+arosa_lenzerheide:
+  name: Arosa Lenzerheide
+  booking_url: "https://shop.arosalenzerheide.swiss/de/1-tagesticket-ski_ticket_127"
+  fetcher_class_name: ArosaLenzerheide
