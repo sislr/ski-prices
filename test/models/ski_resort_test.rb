@@ -27,10 +27,25 @@ class SkiResortTest < ActiveSupport::TestCase
     end
   end
 
-  test "fetch_all_prices! enqueues a job" do
+  test "fetch_all_prices! enqueues a job when there is an active season" do
     ski_resort = ski_resorts(:st_moritz)
-    assert_enqueued_with(job: PriceTrackerJob, args: [ ski_resort.id ]) do
-      SkiResort.fetch_all_prices!
+
+    SkiResort.stub(:find_each, ->(&block) { [ ski_resort ].each(&block) }) do
+      ski_resort.stub(:current_ski_season, ski_seasons(:st_moritz_2025_2026)) do
+        assert_enqueued_with(job: PriceTrackerJob, args: [ ski_resort.id ]) do
+          SkiResort.fetch_all_prices!
+        end
+      end
+    end
+  end
+
+  test "fetch_all_prices! does NOT enqueue a job when there is NO active season" do
+    ski_resort = ski_resorts(:st_moritz)
+
+    ski_resort.stub(:current_ski_season, nil) do
+      assert_no_enqueued_jobs do
+        SkiResort.fetch_all_prices!
+      end
     end
   end
 end

@@ -7,6 +7,8 @@ class SkiResort < ApplicationRecord
 
   def self.fetch_all_prices!
     self.find_each do |ski_resort|
+      next unless ski_resort.current_ski_season
+
       PriceTrackerJob.perform_later(ski_resort.id)
     end
   end
