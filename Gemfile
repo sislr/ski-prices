@@ -37,4 +37,6 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
+  # TODO: drop this pin once minitest 6 is compatible with Rails 8.1's Rails::LineFiltering#run
+  gem "minitest", "~> 5.25"
 end
