@@ -24,10 +24,14 @@ class SkiSeasonTest < ActiveSupport::TestCase
     assert_equal Date.new(2026, 4, 26), season.end_date
 
     travel_to Date.new(2025, 1, 1) do
-      assert_not_includes SkiSeason.active, season
+      assert_includes SkiSeason.active, season
     end
 
     travel_to Date.new(2025, 9, 22) do
+      assert_includes SkiSeason.active, season
+    end
+
+    travel_to Date.new(2025, 11, 1) do
       assert_includes SkiSeason.active, season
     end
 

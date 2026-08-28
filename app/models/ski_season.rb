@@ -3,7 +3,7 @@ class SkiSeason < ApplicationRecord
   has_many :ski_passes, dependent: :destroy
   has_many :price_entries, through: :ski_passes
 
-  scope :active, -> { where("start_date <= ? AND end_date >= ?", 2.months.from_now, Date.current) }
+  scope :active, -> { where(end_date: Date.current..) }
   scope :past, -> { where("end_date < ?", Date.current) }
 
   validates :slug, presence: true, uniqueness: true
