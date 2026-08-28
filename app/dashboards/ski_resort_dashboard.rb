@@ -67,7 +67,7 @@ class SkiResortDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how ski resorts are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(ski_resort)
-  #   "SkiResort ##{ski_resort.id}"
-  # end
+  def display_resource(ski_resort)
+    ski_resort.name
+  end
 end
