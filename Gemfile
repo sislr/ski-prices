@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 8.1.1"
+gem "rails", github: "rails/rails", branch: "main"
 gem "sqlite3"
 gem "puma"
 gem "propshaft"
@@ -26,7 +26,6 @@ group :development, :test do
   gem "bundler-audit", require: false
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
-  gem "awesome_print"
 end
 
 group :development do
