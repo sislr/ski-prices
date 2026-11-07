@@ -7,7 +7,7 @@ image: sislr/ski_prices
 # Deploy to these servers.
 servers:
   web:
-    - 78.47.120.71
+    - hetzner-vps
 #  job:
 #    hosts:
 #      - 192.168.0.1
@@ -21,8 +21,7 @@ servers:
 # Don't use this when deploying to multiple web servers (then you have to terminate SSL at your load balancer).
 #
 proxy:
-  ssl: true
-  host: ski.sislr.ch
+  ssl: false
 
 # Where you keep your container images.
 registry:
@@ -78,7 +77,7 @@ builder:
   arch: amd64
 
   # Build image via remote server (useful for faster amd64 builds on arm64 computers)
-  remote: ssh://root@78.47.120.71
+  remote: ssh://root@hetzner-vps
 
   #
   # # Pass arguments and secrets to the Docker build process
